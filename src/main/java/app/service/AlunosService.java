@@ -46,7 +46,7 @@ public class AlunosService {
 	
 	public Alunos findById(long id) {
 		
-		Alunos alunos = this.alunosRepository.findById(id).get();
+		Alunos alunos = this.alunosRepository.findById(id).get()	;
 		
 		return alunos;
 		

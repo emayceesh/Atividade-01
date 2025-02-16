@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Alunos;
 import app.service.AlunosService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/alunos")
@@ -26,7 +27,7 @@ public class AlunosController {
 	private AlunosService alunosService;
 
 	@PostMapping("/save")
-	public ResponseEntity<String> save (@RequestBody Alunos alunos){
+	public ResponseEntity<String> save (@RequestBody @Valid Alunos alunos, BindingResult result){
 
 		try {
 			String mensagem = this.alunosService.save(alunos);

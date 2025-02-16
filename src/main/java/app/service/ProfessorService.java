@@ -18,7 +18,7 @@ public class ProfessorService {
 		
 		this.professorRepository.save(professor);
 		
-		return "Aluno matriculado com sucesso!";
+		return "Professor matriculado com sucesso!";
 		
 	}
 	
@@ -27,14 +27,14 @@ public class ProfessorService {
 		professor.setId(id);
 		this.professorRepository.save(professor);
 		
-		return "Aluno alterado com sucesso";
+		return "Professor alterado com sucesso";
 	}
 	
 	public String delete(long id) {
 		
 		this.professorRepository.deleteById(id);
 		
-		return "Aluno deletado comm sucesso!";
+		return "Professor deletado comm sucesso!";
 	}
 	
 	public List<Professor> findAll(){
