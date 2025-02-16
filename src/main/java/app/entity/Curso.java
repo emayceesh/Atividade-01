@@ -20,6 +20,23 @@ public class Curso {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String nomeCurso;
+	
+	
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getNomeCurso() {
+		return nomeCurso;
+	}
+	public void setNomeCurso(String nomeCurso) {
+		this.nomeCurso = nomeCurso;
+	}
 
+	
+	
 
 }

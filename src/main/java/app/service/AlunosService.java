@@ -24,30 +24,31 @@ public class AlunosService {
 	
 	public String update(Alunos alunos, long id) {
 		
+		alunos.setId(id);
+		this.alunosRepository.save(alunos);
 		
-		
-		return "Aluno aletrado com sucesso";
+		return "Aluno alterado com sucesso";
 	}
 	
 	public String delete(long id) {
 		
-		
+		this.alunosRepository.deleteById(id);
 		
 		return "Aluno deletado comm sucesso!";
 	}
 	
 	public List<Alunos> findAll(){
 		
+		List<Alunos> listaAlunos = this.alunosRepository.findAll();
 		
-		
-		return null;
+		return listaAlunos;
 	}
 	
 	public Alunos findById(long id) {
 		
+		Alunos alunos = this.alunosRepository.findById(id).get();
 		
-		
-		return null;
+		return alunos;
 		
 	}
 

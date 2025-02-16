@@ -20,5 +20,38 @@ public class Professor {
 	private long id;
 	private String nomeProfessor;
 	private String cpf;
-	private String email;	
+	private String email;
+	
+	
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getNomeProfessor() {
+		return nomeProfessor;
+	}
+	public void setNomeProfessor(String nomeProfessor) {
+		this.nomeProfessor = nomeProfessor;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}	
+	
+	
+	
+	
+	
+	
 }

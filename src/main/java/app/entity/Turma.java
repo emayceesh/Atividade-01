@@ -22,4 +22,36 @@ public class Turma {
 	private long semestre;
 	private String anoTurma;
 	private String Turno;
+	
+	
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public long getSemestre() {
+		return semestre;
+	}
+	public void setSemestre(long semestre) {
+		this.semestre = semestre;
+	}
+	public String getAnoTurma() {
+		return anoTurma;
+	}
+	public void setAnoTurma(String anoTurma) {
+		this.anoTurma = anoTurma;
+	}
+	public String getTurno() {
+		return Turno;
+	}
+	public void setTurno(String turno) {
+		Turno = turno;
+	}
+	
+	
+	
+	
+	
 }

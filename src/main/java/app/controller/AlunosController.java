@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,9 +37,14 @@ public class AlunosController {
 	}
 
 	@PutMapping("/update/{id}")
-	public String update(@RequestBody Alunos alunos,@PathVariable long id) {
+	public ResponseEntity<String> update(@RequestBody Alunos alunos,@PathVariable long id) {
 
-		return "Carro alterado com sucesso";
+		try {
+			String mensagem = this.alunosService.update(alunos, id);	
+			return new ResponseEntity<>(mensagem, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
+		}
 
 	}
 
@@ -56,8 +62,13 @@ public class AlunosController {
 	@GetMapping("/findAll")
 	public ResponseEntity <List<Alunos>> findAll(){
 
+		try {
+			List<Alunos> listaAlunos = this.alunosService.findAll();
+			return new ResponseEntity<>(listaAlunos, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity <>(null, HttpStatus.BAD_REQUEST);
+		}
 
-		return null;
 	}
 
 	@GetMapping("/findById/{id}")
