@@ -11,6 +11,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,8 +27,11 @@ public class Turma {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	@NotBlank(message = "O campo semestre não pode estar vazio")
 	private long semestre;
+	@NotBlank(message = "O ano não pode estar vazio")
 	private String anoTurma;
+	@NotBlank(message = "O turno não pode estar vazio")
 	private String Turno;
 	
 	@OneToMany(mappedBy = "turma")

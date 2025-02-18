@@ -28,7 +28,9 @@ public class Professor {
 	@NotBlank(message = "O nome não pode estar vazio")
 	@Pattern(regexp = "^\\S+\\s+\\S+.*$", message = "Nome deve ter um espaço entre palavas")
 	private String nomeProfessor;
+	@NotBlank(message = "O cpf não pode estar vazio")
 	private String cpf;
+	@NotBlank(message = "O email não pode estar vazio")
 	private String email;
 	
 	

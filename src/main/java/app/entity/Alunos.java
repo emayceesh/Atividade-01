@@ -28,7 +28,9 @@ public class Alunos {
 	@NotBlank(message = "O nome não pode estar vazio")
 	@Pattern(regexp = "^\\S+\\s+\\S+.*$", message = "Nome deve ter um espaço entre palavas")
 	private String nomeCompleto;
+	@NotBlank(message = "O cpf não pode estar vazio")
 	private String cpf;
+	@NotBlank(message = "O telefone não pode estar vazio")
 	private String telefone;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
