@@ -27,24 +27,7 @@ public class Curso {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	
 	@NotBlank(message = "O nome não pode estar vazio")
 	private String nomeCurso;
-	
-	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getNomeCurso() {
-		return nomeCurso;
-	}
-	public void setNomeCurso(String nomeCurso) {
-		this.nomeCurso = nomeCurso;
-	}
-
-	
-	
-
 }

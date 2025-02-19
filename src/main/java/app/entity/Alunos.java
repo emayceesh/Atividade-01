@@ -1,5 +1,9 @@
 package app.entity;
 
+import org.hibernate.validator.constraints.br.CPF;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,48 +29,23 @@ public class Alunos {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
 	@NotBlank(message = "O nome não pode estar vazio")
 	@Pattern(regexp = "^\\S+\\s+\\S+.*$", message = "Nome deve ter um espaço entre palavas")
 	private String nomeCompleto;
+	
+	@CPF(message = "O CPF tem que ser válido!")
 	@NotBlank(message = "O cpf não pode estar vazio")
 	private String cpf;
+	
 	@NotBlank(message = "O telefone não pode estar vazio")
 	private String telefone;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("alunos")
 	private Turma turma;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Professor professor;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
 	private Curso curso;
-	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getNomeCompleto() {
-		return nomeCompleto;
-	}
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
-	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	public String getTelefone() {
-		return telefone;
-	}
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	
 	
 }
