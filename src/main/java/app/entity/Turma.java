@@ -37,13 +37,13 @@ public class Turma {
 	private String nomeTurma;
 
 	@NotNull(message = "O campo semestre não pode estar vazio")
-	private Long semestre;
+	private String semestre;
 
 	@NotBlank(message = "O ano não pode estar vazio")
 	private String anoTurma;
 
 	@NotBlank(message = "O turno não pode estar vazio")
-	private String Turno;
+	private String turno;
 
 	@OneToMany(mappedBy = "turma")
 	@JsonIgnoreProperties("")

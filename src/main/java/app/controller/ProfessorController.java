@@ -28,30 +28,30 @@ public class ProfessorController {
 	private ProfessorService professorService;
 
 	@PostMapping("/save")
-	public ResponseEntity<String> save (@RequestBody Professor professor){
+	public ResponseEntity<String> save(@RequestBody Professor professor) {
 
 		try {
 			String mensagem = this.professorService.save(professor);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>("Deu erro!" + e.getMessage(), HttpStatus.BAD_REQUEST);
-		}	
+		}
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String> update(@RequestBody Professor professor,@PathVariable long id) {
+	public ResponseEntity<String> update(@RequestBody Professor professor, @PathVariable long id) {
 
 		try {
-			String mensagem = this.professorService.update(professor, id);	
+			String mensagem = this.professorService.update(professor, id);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<String> delete(@PathVariable long id){
+	public ResponseEntity<String> delete(@PathVariable long id) {
 		try {
 			String mensagem = this.professorService.delete(id);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
@@ -60,61 +60,59 @@ public class ProfessorController {
 		}
 	}
 
-
 	@GetMapping("/findAll")
-	public ResponseEntity <List<Professor>> findAll(){
+	public ResponseEntity<List<Professor>> findAll() {
 
 		try {
 			List<Professor> listaProfessor = this.professorService.findAll();
 			return new ResponseEntity<>(listaProfessor, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity <>(null, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
 
 	}
 
 	@GetMapping("/findById/{id}")
-	public ResponseEntity <Professor> findById(long id){
-
+	public ResponseEntity<Professor> findById(long id) {
 
 		return null;
 	}
-	
+
 	@GetMapping("/findByNomeProfessor")
 	public ResponseEntity<List<Professor>> findByNomeProfessorStartingWith(@RequestParam String nomeProfessor) {
-		
+
 		try {
 			List<Professor> lista = this.professorService.findByNomeProfessorStartingWith(nomeProfessor);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
-		
+
 	}
-	
+
 	@GetMapping("/findByEspecialidade")
 	public ResponseEntity<List<Professor>> findByEspecialidadeStartingWith(@RequestParam String especialidade) {
-		
+
 		try {
 			List<Professor> lista = this.professorService.findByEspecialidadeStartingWith(especialidade);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
-		
+
 	}
-	
+
 	@GetMapping("/findByEmailNotLike")
 	public ResponseEntity<List<Professor>> findByEmailNotLike(@RequestParam String emailPattern) {
 		try {
 			List<Professor> lista = this.professorService.findByEmailNotLike(emailPattern);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<>(null , HttpStatus.BAD_REQUEST);
-			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
 		}
 	}
-	
+
 	@GetMapping("/findByEmail")
 	public ResponseEntity<List<Professor>> findByEmail(@RequestParam String email) {
 		try {
@@ -123,7 +121,7 @@ public class ProfessorController {
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
+
 	}
-	
-	
+
 }

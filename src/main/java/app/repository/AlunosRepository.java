@@ -13,6 +13,8 @@ public interface AlunosRepository extends JpaRepository<Alunos, Long>{
 	public List<Alunos> findByTelefoneContaining(String telefone);
 	
 	public List<Alunos> findByTurmaNomeTurma(String nomeTurma);
+	
+	public List<Alunos> findByCpf(String cpf);
 
 
 }

@@ -34,18 +34,19 @@ public class Alunos {
 	@Pattern(regexp = "^\\S+\\s+\\S+.*$", message = "Nome deve ter um espaço entre palavas")
 	private String nomeCompleto;
 	
-	@CPF(message = "O CPF tem que ser válido!")
+	
 	@NotBlank(message = "O cpf não pode estar vazio")
 	private String cpf;
 	
-	@NotBlank(message = "O telefone não pode estar vazio")
 	private String telefone;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	private Boolean cadastroCompleto;
+	
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JsonIgnoreProperties("alunos")
 	private Turma turma;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Curso curso;
 	
 }

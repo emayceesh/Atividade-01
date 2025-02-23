@@ -16,13 +16,33 @@ public class AlunosService {
 	
 	public String save(Alunos alunos) {
 		
+		verificarTelefoneAluno(alunos);
+		this.verificarCpfAluno(alunos.getCpf());
+		
 		this.alunosRepository.save(alunos);
-		
-		return "Aluno matriculado com sucesso!";
-		
+		return "Aluno matriculado com sucesso!";	
+	}
+	
+	public void verificarTelefoneAluno(Alunos alunos) {
+		if (alunos.getTelefone() == null || alunos.getTelefone().isEmpty()) {
+			alunos.setCadastroCompleto(false);
+		}else {
+			alunos.setCadastroCompleto(true);
+		}
+	}
+	
+	public void verificarCpfAluno(String cpf) {
+		List<Alunos> alunosComCpf = alunosRepository.findByCpf(cpf);
+		if(!alunosComCpf.isEmpty()) {
+			throw new RuntimeException("CPF já cadastrado!");
+		}
 	}
 	
 	public String update(Alunos alunos, long id) {
+		
+		this.verificarTelefoneAluno(alunos);
+		this.verificarCpfAluno(alunos.getCpf());
+
 		
 		alunos.setId(id);
 		this.alunosRepository.save(alunos);
@@ -49,7 +69,10 @@ public class AlunosService {
 		Alunos alunos = this.alunosRepository.findById(id).get()	;
 		
 		return alunos;
-		
+	}
+	
+	public List<Alunos> findByCpf(String cpf){
+		return this.alunosRepository.findByCpf(cpf);
 	}
 	
 	public List<Alunos> findByNomeCompleto (String nome){

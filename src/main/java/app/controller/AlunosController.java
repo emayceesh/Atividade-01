@@ -35,7 +35,7 @@ public class AlunosController {
 			String mensagem = this.alunosService.save(alunos);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<>("Deu erro!", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Deu erro!" +e.getMessage(), HttpStatus.BAD_REQUEST);
 		}	
 	}
 
@@ -80,6 +80,17 @@ public class AlunosController {
 
 		return null;
 	}
+	
+	@GetMapping("/findByCpf")
+	public ResponseEntity<List<Alunos>> findByCpf(@RequestParam String cpf) {
+		try {
+			List<Alunos> listaCPF = this.alunosService.findByCpf(cpf);
+			return new ResponseEntity<>(listaCPF, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 
 	@GetMapping("/findByNome")
 	public ResponseEntity<List<Alunos>> findByNomeCompletoStartingWith(@RequestParam String nome) {
