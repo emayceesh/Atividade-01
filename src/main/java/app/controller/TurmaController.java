@@ -23,24 +23,24 @@ import app.service.TurmaService;
 public class TurmaController {
 
 	@Autowired
-	private TurmaService alunosService;
+	private TurmaService turmaService;
 
 	@PostMapping("/save")
-	public ResponseEntity<String> save (@RequestBody Turma alunos){
+	public ResponseEntity<String> save (@RequestBody Turma turma){
 
 		try {
-			String mensagem = this.alunosService.save(alunos);
+			String mensagem = this.turmaService.save(turma);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<>("Deu erro!", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Deu erro!" + e.getMessage(), HttpStatus.BAD_REQUEST);
 		}	
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<String> update(@RequestBody Turma alunos,@PathVariable long id) {
+	public ResponseEntity<String> update(@RequestBody Turma turma,@PathVariable long id) {
 
 		try {
-			String mensagem = this.alunosService.update(alunos, id);	
+			String mensagem = this.turmaService.update(turma, id);	
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
@@ -49,9 +49,9 @@ public class TurmaController {
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<String> delete(@PathVariable long id){
+	public ResponseEntity<String> delete(@PathVariable Long id){
 		try {
-			String mensagem = this.alunosService.delete(id);
+			String mensagem = this.turmaService.delete(id);
 			return new ResponseEntity<>(mensagem, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(" ", HttpStatus.BAD_REQUEST);
@@ -63,7 +63,7 @@ public class TurmaController {
 	public ResponseEntity <List<Turma>> findAll(){
 
 		try {
-			List<Turma> listaTurma = this.alunosService.findAll();
+			List<Turma> listaTurma = this.turmaService.findAll();
 			return new ResponseEntity<>(listaTurma, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity <>(null, HttpStatus.BAD_REQUEST);

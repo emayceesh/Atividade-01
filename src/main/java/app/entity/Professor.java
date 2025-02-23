@@ -30,7 +30,7 @@ import lombok.Setter;
 public class Professor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	
 	@NotBlank(message = "O nome não pode estar vazio")
 	@Pattern(regexp = "^\\S+\\s+\\S+.*$", message = "Nome deve ter um espaço entre palavas")
@@ -44,7 +44,6 @@ public class Professor {
 	@NotBlank(message = "O email não pode estar vazio")
 	private String email;
 	
-	@Pattern(regexp = "^\\S+\\s+\\S+.*$", message = "Nome deve ter um espaço entre palavas")
 	private String especialidade;
 	
 	@ManyToMany(mappedBy = "professores")

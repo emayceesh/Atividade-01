@@ -51,6 +51,20 @@ public class AlunosService {
 		return alunos;
 		
 	}
+	
+	public List<Alunos> findByNomeCompleto (String nome){
+		
+		return this.alunosRepository.findByNomeCompletoStartingWith(nome);	
+		
+	}
+	
+	public List<Alunos> findByTelefone (String telefone){
+		return alunosRepository.findByTelefoneContaining(telefone);
+	}
+	
+	public List<Alunos> findByNomeTurma (String nomeTurma){
+		return alunosRepository.findByTurmaNomeTurma(nomeTurma);
+	}
 
 
 }

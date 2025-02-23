@@ -51,6 +51,27 @@ public class ProfessorService {
 		return professor;
 		
 	}
+	
+	public List<Professor> findByNomeProfessorStartingWith (String nomeProfessor){
+		
+		 return professorRepository.findByNomeProfessorStartingWith(nomeProfessor);
+		
+	}
+	
+	public List<Professor> findByEspecialidadeStartingWith (String especialidade){
+		
+		 return professorRepository.findByEspecialidadeStartingWith(especialidade);
+		
+	}
+	
+	public List<Professor> findByEmailNotLike(String emailPattern){
+		
+		return professorRepository.findByEmailNotLike("%@gmail.com%");
+	}
+	
+	public List<Professor> findByEmail (String email){
+		return professorRepository.findByEmail(email);
+	}
 
 
 }

@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.entity.Alunos;
 import app.service.AlunosService;
 import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/api/alunos")
@@ -79,4 +81,41 @@ public class AlunosController {
 		return null;
 	}
 
+	@GetMapping("/findByNome")
+	public ResponseEntity<List<Alunos>> findByNomeCompletoStartingWith(@RequestParam String nome) {
+		
+		try {
+			List<Alunos> lista = this.alunosService.findByNomeCompleto(nome);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+		
+	}
+	
+	@GetMapping("/findByTelefone")
+	public ResponseEntity<List<Alunos>> findByTelefoneContaining(@RequestParam String telefone) {
+		try {
+			List<Alunos> lista = this.alunosService.findByTelefone(telefone); 
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+		
+		
+	}
+	
+	@GetMapping("/findByNomeTurma")
+	public ResponseEntity<List<Alunos>> findByNomeTurma(@RequestParam String nomeTurma) {
+		
+		try {
+			List<Alunos> lista = this.alunosService.findByNomeTurma(nomeTurma);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+		
+	}
+	
+	
 }

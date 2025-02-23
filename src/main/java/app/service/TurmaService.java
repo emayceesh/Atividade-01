@@ -7,46 +7,48 @@ import org.springframework.stereotype.Service;
 
 import app.entity.Turma;
 import app.repository.TurmaRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class TurmaService {
 	
 	@Autowired
-	private TurmaRepository alunosRepository;
+	private TurmaRepository turmaRepository;
 	
-	public String save(Turma alunos) {
+	
+	public String save(Turma turma) {
 		
-		this.alunosRepository.save(alunos);
+		this.turmaRepository.save(turma);
 		
-		return "Aluno matriculado com sucesso!";
+		return "Turma cadastrada com sucesso!";
 		
 	}
 	
-	public String update(Turma alunos, long id) {
+	public String update(Turma turma, long id) {
 		
-		alunos.setId(id);
-		this.alunosRepository.save(alunos);
+		turma.setId(id);
+		this.turmaRepository.save(turma);
 		
-		return "Aluno alterado com sucesso";
+		return "Turma alterado com sucesso";
 	}
 	
 	public String delete(long id) {
 		
-		this.alunosRepository.deleteById(id);
+		this.turmaRepository.deleteById(id);
 		
-		return "Aluno deletado comm sucesso!";
+		return "Turma deletada comm sucesso!";
 	}
 	
 	public List<Turma> findAll(){
 		
-		List<Turma> listaTurma = this.alunosRepository.findAll();
+		List<Turma> listaTurma = this.turmaRepository.findAll();
 		
 		return listaTurma;
 	}
 	
 	public Turma findById(long id) {
 		
-		Turma alunos = this.alunosRepository.findById(id).get();
+		Turma alunos = this.turmaRepository.findById(id).get();
 		
 		return alunos;
 		
